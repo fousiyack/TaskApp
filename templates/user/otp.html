@@ -23,7 +23,9 @@
               <h4>Verify</h4>
               <p>Your code was sent to you via email</p>
 
-              <form action="/verify-otp" method="post">
+              <form action="{% url 'otp' %}" method="post">
+                {% csrf_token %}
+
                 <div class="d-flex justify-content-center">
                   <input
                     type="text"
@@ -54,6 +56,17 @@
                     required
                   />
                 </div>
+                {% comment %}
+                <div class="d-flex justify-content-center">
+                  <input
+                    type="text"
+                    class="form-control otp-input"
+                    maxlength="1"
+                    name="otp"
+                    required
+                  />
+                </div>
+                {% endcomment %}
                 <button
                   type="submit"
                   class="btn btn-primary btn-block mt-3"

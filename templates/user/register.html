@@ -33,6 +33,7 @@
                   </h2>
 
                   <form action="{% url 'register' %}" method="POST">
+                    {% csrf_token %}
                     <div class="form-outline mb-3">
                       <input
                         type="text"
@@ -58,7 +59,7 @@
                     <div class="form-outline mb-3">
                       <input
                         type="password"
-                        name='password'
+                        name="password"
                         class="form-control form-control-lg"
                       />
                       <label class="form-label" for="form3Example4cg"
@@ -105,7 +106,7 @@
 
                     <p class="text-center text-muted mt-4 mb-0">
                       Have already an account?
-                      <a href="#!" class="fw-bold text-body"
+                      <a href="{%url 'userLogin'%}" class="fw-bold text-body"
                         ><u>Login here</u></a
                       >
                     </p>

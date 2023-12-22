@@ -10,6 +10,12 @@ class RegistrationSerializer(serializers.ModelSerializer):
         
     def create(self,validated_data):
         user=CustomUser.objects.create_user(**validated_data)    
+        password = validated_data.pop('password', None)
+        if password:
+            user.set_password(password)
+        user.is_active = False
+        user.save()
+        return user
 
 
 # class LoginSerializer(serializers.Serializer):
